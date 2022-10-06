@@ -3,7 +3,7 @@ import { serve } from "https://deno.land/std@0.155.0/http/server.ts";
 
 function handler(_req: Request) {
 	const t = performance.now();
-	const db = new Database(new URL("./db/file.db", import.meta.url), { readonly: true });
+	const db = new Database(new URL("./db/file.db", import.meta.url), { readonly: true, memory: true });
 	const statement = db.prepare("SELECT * FROM dict LIMIT 100");
 	const items = [];
 
